@@ -1,10 +1,9 @@
 title: cocos2dx-3.0版本项目创建
 tags:
-  - cocos2dx
   - 工程创建
 id: 1368
 categories:
-  - 游戏开发
+  - cocos2dx
 date: 2014-06-06 15:54:40
 ---
 

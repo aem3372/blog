@@ -1,12 +1,10 @@
 title: cocos2dx-3.0公共基类和拷贝机制的改变
 tags:
-  - CCObject
-  - Ref
   - 公共基类
   - 拷贝机制
 id: 1379
 categories:
-  - 游戏开发
+  - cocos2dx
 date: 2014-06-06 20:47:17
 ---
 

@@ -1,12 +1,10 @@
-title: '[bug fix]CocosStudio动画编辑器取消补间动画在程序中加载后无效'
+title: '解决CocosStudio动画编辑器取消补间动画在程序中加载后无效问题'
 tags:
-    - Bug
-    - cocos2dx
     - CocosStudio
     - 补间动画
 id: 1422
 categories:
-    - 游戏开发
+    - cocos2dx
 date: 2014-08-30 03:41:35
 ---
 

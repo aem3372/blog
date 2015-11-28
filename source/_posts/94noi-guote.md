@@ -1,9 +1,6 @@
-title: '四则运算的括号|剔除多余括号(94NOI)'
+title: '剔除多余括号(94NOI)'
 tags:
-  - '94'
   - noi
-  - 四则运算
-  - 括号
 id: 686
 categories:
   - 算法/数据结构

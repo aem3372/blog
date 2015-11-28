@@ -18,6 +18,8 @@ date: 2015-05-03 20:11:52
 7. 如果启动java程序的环境支持控制台，则可以使用System.console
 8. java的启动参数没有文件名，args就是第一个参数
 
+<!--more-->
+
 ## 第二日
 
 1. PrintWriter.printf中对场宽的限定，中文字符实际长宽2，而Java认为是1
