@@ -13,33 +13,35 @@ date: 2013-04-01 13:21:16
 
 ## 我的代码
 
-    #include <stdio.h>
-    #define MAX 5000
-    int arr[MAX] = {0};
-    int main(void)
+```cpp
+#include <stdio.h>
+#define MAX 5000
+int arr[MAX] = {0};
+int main(void)
+{
+    int n,i,j,k;
+    scanf("%d",&n);
+    arr[0]=1;
+    k=1; /*当前长度为1*/
+    for(i=2; i<=n; ++i)
     {
-        int n,i,j,k;
-        scanf("%d",&n);
-        arr[0]=1;
-        k=1; /*当前长度为1*/
-        for(i=2; i<=n; ++i)
+        /*对于有效部分乘上k*/
+        int c = 0;
+        for(j=0; j<k; ++j)
         {
-            /*对于有效部分乘上k*/
-            int c = 0;
-            for(j=0; j<k; ++j)
-            {
-                int s = arr[j]*i + c;
-                arr[j] = s % 10;
-                c = s / 10;
-            }
-            /*更改有效长度*/
-            while(c)
-            {
-                arr[k++] = c %10;
-                c /= 10;
-            }
+            int s = arr[j]*i + c;
+            arr[j] = s % 10;
+            c = s / 10;
         }
-        for(i=k-1; i>=0; --i)
-            printf("%d",arr[i]);
-        return 0;
+        /*更改有效长度*/
+        while(c)
+        {
+            arr[k++] = c %10;
+            c /= 10;
+        }
     }
+    for(i=k-1; i>=0; --i)
+        printf("%d",arr[i]);
+    return 0;
+}
+```

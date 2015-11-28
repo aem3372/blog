@@ -1,8 +1,6 @@
 title: 《仙五前传》通关经历及感触
 tags:
-  - 仙五前传
-  - 仙剑奇侠传五前传
-  - 通关
+  - 仙剑奇侠传
 id: 451
 categories:
   - 生活杂记
@@ -17,7 +15,9 @@ date: 2013-01-19 05:32:24
 
 [![screen2013_1_14_16_20_32](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_14_16_20_32.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_14_16_20_32.jpg)
 
-画面还是如此的绚丽(要是把回合制改成即时制多好！！)，只是这傍晚的海景，让我看了不得不感叹，又是一场华丽丽的悲剧啊！哎~~点击新的征程，发现这次多了个选择战斗难度（如此也好，省的有些想要看剧情的找修改器），一共有3种选择，分别是简单、一般、困难。我果断选择了一般模式（我可不是游戏达人，一般就好）。
+<!--more-->
+
+画面还是如此的绚丽(要是把回合制改成即时制多好！！)，只是这傍晚的海景，让我看了不得不感叹，又是一场华丽丽的悲剧啊！哎~~点击新的征程，发现这次多了个选择战斗难度（如此也好，省的有些想要看剧情的找修改器），一共有3种选择，分别是简单、一般、困难。我果断选择了一般模式。
 
 正式游戏开始，首先映入眼帘的是男主角--夏侯瑾轩，一看就是文人（带有贵族气质，看来大宇的美工没偷懒，话说古剑奇谭的那个书呆子就画得让我很伤），个人挺喜欢的。难得出门的大少爷，一出门就遇到女主角--瑕（挺漂亮的，话说这个另类名字的背后是有一个悲伤故事的）和大叔--谢沧行（不得不说他怎么这么像古剑的那位尹千觞大叔，无论性格，还是身份，他们都很相似）。
 
@@ -44,40 +44,34 @@ date: 2013-01-19 05:32:24
 [![screen2013_1_17_16_35_44](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_17_16_35_44.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_17_16_35_44.jpg)
 
 最终，唯一活下来的主角就只有暮菖兰了（又死这么多人，该死的魔翳，害死这么多人啊）。
-&nbsp;
 
-# 接下来附上一些有趣的图
+## 接下来附上一些有趣的图
 
-&nbsp;
+**长得真有趣的石头人**
 
-## [![screen2013_1_15_11_23_42](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_11_23_42.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_11_23_42.jpg)<span style="color: #ff6600;"><big>长得真有趣的石头人</big></span>
+[![screen2013_1_15_11_23_42](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_11_23_42.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_11_23_42.jpg)
 
-&nbsp;
+**草谷原来真的很漂亮**
 
-## [![screen2013_1_15_11_38_15](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_11_38_15.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_11_38_15.jpg)<span style="color: #ff6600;"><big>草谷原来真的很漂亮</big></span>
+[![screen2013_1_15_11_38_15](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_11_38_15.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_11_38_15.jpg)
 
-&nbsp;
+**瑾轩和瑕的合击技**
 
-## [![screen2013_1_15_6_10_32](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_6_10_32.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_6_10_32.jpg)<span style="color: #ff6600;"><big>瑾轩和瑕的合击技</big></span>
+[![screen2013_1_15_6_10_32](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_6_10_32.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_6_10_32.jpg)
 
-&nbsp;
+**凌波和龙溟的合击技**
 
-## [![screen2013_1_15_12_44_38](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_12_44_38.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_12_44_38.jpg)<span style="color: #ff6600;"><big>凌波和龙溟的合击技</big></span>
+[![screen2013_1_15_12_44_38](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_12_44_38.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_12_44_38.jpg)
 
-&nbsp;
+**暧昧时刻**
 
-## [![screen2013_1_15_13_17_19](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_13_17_19.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_13_17_19.jpg)<span style="color: #ff6600;"><big>暧昧时刻</big></span>
+[![screen2013_1_15_13_17_19](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_13_17_19.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_13_17_19.jpg)
 
-&nbsp;
+**血手暴走**
 
-## [![screen2013_1_16_14_27_40](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_16_14_27_40.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_16_14_27_40.jpg)<span style="color: #ff6600;"><big>血手暴走</big></span>
+[![screen2013_1_16_14_27_40](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_16_14_27_40.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_16_14_27_40.jpg)
 
-&nbsp;
+--- 
 总的来说呢，这游戏做的还不错，荒废3天寒假玩仙剑算是值了，该交代的都交代清楚了，剧情也很感人（-_-！又是悲剧），另外最终BOSS也太弱了吧。
 还有不得不吐槽下价格，大量使用仙五素材，还和仙五一样的价格！！
-据说豪华版出了问题，葫芦MP3内存标称2Gb，实际只有100Mb，哎，软星被坑了，顾客也被坑了，鄙视那个MP3制造商，修改大小，欺骗客户。
-
-[warning]
-作者:Aem
-本文版权归作者和www.aemiot.com共有，未征得作者本人同意之前，请勿将本文内容用于任何商业用途。 欢迎非商业用途转载，但请在明显位置注明本文作者和出处链接，否则我们保留追究法律责任的权利。
-[/warning]
+据说豪华版出了问题，葫芦MP3内存标称2Gb，实际只有100Mb。

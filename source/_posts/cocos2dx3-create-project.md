@@ -31,13 +31,14 @@ cocos2d-x-3.0 Apr.23 2014**
 1. 安装Python，并将其目录加入环境变量中（据说3.0以后可能会有问题，推荐使用2.7）。
 
 2. 将 **[cocos-root]/tools/cocos2d-console/bin/ **加入环境变量的系统路径中。
-      这时，打开终端/命令行允许**cocos**命令，应该可以看到使用方法。
+      这时，打开终端/命令行运行`cocos`命令，应该可以看到使用方法。
 
-3. 创建工程，我们可以使用cocos new命令。
+3. 创建工程，我们可以使用`cocos new`命令。
 
-
-    cocos new [-h] [-p PACKAGE_NAME] -l {cpp,lua,js} [-d DIRECTORY]
-              [-t TEMPLATE_NAME] [--no-native]
-              [PROJECT_NAME]
+```
+cocos new [-h] [-p PACKAGE_NAME] -l {cpp,lua,js} [-d DIRECTORY]
+          [-t TEMPLATE_NAME] [--no-native]
+          [PROJECT_NAME]
+```
 
 例如我们要在当前目录创建一个名为test的c++项目，应该执行指令**cocos new -l cpp test**

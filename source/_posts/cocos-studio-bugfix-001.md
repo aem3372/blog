@@ -26,34 +26,36 @@ date: 2014-08-30 03:41:35
 
 修正后的代码:
 
-    //CCDatas.cpp
-    void FrameData::copy(const BaseData *baseData)
+```cpp
+//CCDatas.cpp
+void FrameData::copy(const BaseData *baseData)
+{
+    BaseData::copy(baseData);
+        
+    if (const FrameData *frameData = dynamic_cast<const FrameData*>(baseData))
     {
-        BaseData::copy(baseData);
-            
-        if (const FrameData *frameData = dynamic_cast<const FrameData*>(baseData))
+        duration = frameData->duration;
+        displayIndex = frameData->displayIndex;
+        
+        tweenEasing = frameData->tweenEasing;
+        easingParamNumber = frameData->easingParamNumber;
+        
+        CC_SAFE_DELETE(easingParams);
+        if (easingParamNumber != 0)
         {
-            duration = frameData->duration;
-            displayIndex = frameData->displayIndex;
-            
-            tweenEasing = frameData->tweenEasing;
-            easingParamNumber = frameData->easingParamNumber;
-            
-            CC_SAFE_DELETE(easingParams);
-            if (easingParamNumber != 0)
+            easingParams = new float[easingParamNumber];
+            for (int i = 0; i<easingParamNumber; i++)
             {
-                easingParams = new float[easingParamNumber];
-                for (int i = 0; i<easingParamNumber; i++)
-                {
-                    easingParams[i] = frameData->easingParams[i];
-                }
+                easingParams[i] = frameData->easingParams[i];
             }
-
-            blendFunc = frameData->blendFunc;
-            // Bug Fix
-            isTween = frameData->isTween;
         }
+
+        blendFunc = frameData->blendFunc;
+        // Bug Fix
+        isTween = frameData->isTween;
     }
+}
+```
 
 ## 参考文章
 - [cocos2dx3.0无法取消Armatrue骨骼动画中的补间效果问题的解决办法](http://blog.csdn.net/leafvmaple/article/details/24894015 "http://blog.csdn.net/leafvmaple/article/details/24894015")

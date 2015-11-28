@@ -13,4 +13,4 @@ tags:
 [![以管理员身份进入命令行模式](http://www.aemiot.com/wp-content/uploads/2014/01/20140130001927.jpg)](http://www.aemiot.com/wp-content/uploads/2014/01/20140130001927.jpg)
 
 1. 以管理员身份进入命令行模式。(按下WIN（徽标键）+R，出现如上图界面，勾选以管理员权限创建任务，然后输入CMD，点击确定，弹出一个命令行窗口。)
-2. 输入netsh winsock reset，按照提示重启后即可。
+2. 输入`netsh winsock reset`，按照提示重启后即可。

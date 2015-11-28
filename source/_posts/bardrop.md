@@ -57,117 +57,119 @@ RBWA
 
 ## 我的代码
 
-    #include <stdio.h>
-    #define MAX 100
-    /*标记,如果有标记方块，返回真，否则返回假*/
-    int SignBar(char aj[ ][MAX],char isSign[ ][MAX],int m,int n)
-    {
-        int i,j,flag=0;
-        /*预处理（初始化 isSign）*/
-        for(i=0; i<m; ++i)
-            for(j=0; j<n; ++j)
-                isSign[i][j] = 0;
-        /*处理开始*/
-        for(i=0;i<m;++i)
-            for(j=0;j<n;++j)
-            {
-                char t[3][3]={0};
-                unsigned short contral[4]={0}; /*分别控制上下左右*/
-                /*获取控制信息*/
-                if(i==0) contral[0]=1;
-                if(i==m-1) contral[1]=1;
-                if(j==0) contral[2]=1;
-                if(j==n-1) contral[3]=1;
-                t[1][1] = aj[i][j];
-                /*构造九宫格*/
-                if(!contral[0]) t[0][1] = aj[i-1][j]; /*上*/
-                if(!contral[1]) t[2][1] = aj[i+1][j]; /*下*/
-                if(!contral[2]) t[1][0] = aj[i][j-1]; /*左*/
-                if(!contral[3]) t[1][2] = aj[i][j+1]; /*右*/
-
-                if(!contral[0]&&!contral[2])/*左上*/
-                    t[0][0] = aj[i-1][j-1];
-                if(!contral[0]&&!contral[3])/*右上*/
-                    t[0][2] = aj[i-1][j+1];
-                if(!contral[1]&&!contral[2])/*左下*/
-                    t[2][0] = aj[i+1][j-1];
-                if(!contral[1]&&!contral[3])/*右下*/
-                    t[2][2] = aj[i+1][j+1];
-                /*九宫格行处理*/
-                if(t[1][0]!=0&&t[1][0]==t[1][1]&&t[1][1]==t[1][2])
-                    isSign[i][j-1] = isSign[i][j] = isSign[i][j+1] = 1,flag=1;
-                /*九宫格列处理*/
-                if(t[0][1]!=0&&t[0][1]==t[1][1]&&t[1][1]==t[2][1])
-                    isSign[i-1][j] = isSign[i][j] = isSign[i+1][j] = 1,flag=1;
-                /*斜线处理*/
-                if(t[0][0]!=0&&t[0][0]==t[1][1]&&t[1][1]==t[2][2])
-                    isSign[i-1][j-1] = isSign[i][j] = isSign[i+1][j+1] = 1,flag=1;
-                if(t[0][2]!=0&&t[0][2]==t[1][1]&&t[1][1]==t[2][0])
-                    isSign[i-1][j+1] = isSign[i][j] = isSign[i+1][j-1] = 1,flag=1;
-            }
-        return flag;
-    }
-    /*消除*/
-    void ClearBar(char aj[][MAX],char isSign[][MAX],int m,int n)
-    {
-        int i,j;
-        for(i=0;i<m;++i)
-            for(j=0;j<n;++j)
-                if(isSign[i][j]==1) aj[i][j]='\0';
-    }
-    /*下落*/
-    void DropBar(char aj[][MAX],char isSign[][MAX],int m,int n)
-    {
-        int i,j,x,t,flag;
+```cpp
+#include <stdio.h>
+#define MAX 100
+/*标记,如果有标记方块，返回真，否则返回假*/
+int SignBar(char aj[ ][MAX],char isSign[ ][MAX],int m,int n)
+{
+    int i,j,flag=0;
+    /*预处理（初始化 isSign）*/
+    for(i=0; i<m; ++i)
+        for(j=0; j<n; ++j)
+            isSign[i][j] = 0;
+    /*处理开始*/
+    for(i=0;i<m;++i)
         for(j=0;j<n;++j)
         {
-            x=m-1;
-            flag=1;
-            while(flag&&x>=0)
-            {
-                if(aj[x][j]=='\0')
-                {
-                    int z;
-                    flag=0;
-                    for(z=x;z>0;--z)
-                        if(aj[z][j]!='\0')
-                        {
-                            flag=1;
-                            for(t=x;t>0;--t)
-                                aj[t][j] = aj[t-1][j];
-                            aj[0][j] = '\0';
-                            ++x; /*使得x保持原位，再次检测这里是否还有可落下方块*/
-                            break;
-                        }
-                }
-              --x;
-             }
-        }
-    }
+            char t[3][3]={0};
+            unsigned short contral[4]={0}; /*分别控制上下左右*/
+            /*获取控制信息*/
+            if(i==0) contral[0]=1;
+            if(i==m-1) contral[1]=1;
+            if(j==0) contral[2]=1;
+            if(j==n-1) contral[3]=1;
+            t[1][1] = aj[i][j];
+            /*构造九宫格*/
+            if(!contral[0]) t[0][1] = aj[i-1][j]; /*上*/
+            if(!contral[1]) t[2][1] = aj[i+1][j]; /*下*/
+            if(!contral[2]) t[1][0] = aj[i][j-1]; /*左*/
+            if(!contral[3]) t[1][2] = aj[i][j+1]; /*右*/
 
-    int main(void)
-    {
-        char arr[MAX][MAX] = {0},
-                bd[MAX][MAX];
-        int i,j,z,m,n;
-        scanf("%d%d",&m,&n);
-        getchar();/*去除行末空格*/
-        for(i=0;i<m;++i)
-        {
-            for(j=0;j<n;++j)
-                arr[i][j] = getchar();
-            getchar(); /*去除行末回车*/
+            if(!contral[0]&&!contral[2])/*左上*/
+                t[0][0] = aj[i-1][j-1];
+            if(!contral[0]&&!contral[3])/*右上*/
+                t[0][2] = aj[i-1][j+1];
+            if(!contral[1]&&!contral[2])/*左下*/
+                t[2][0] = aj[i+1][j-1];
+            if(!contral[1]&&!contral[3])/*右下*/
+                t[2][2] = aj[i+1][j+1];
+            /*九宫格行处理*/
+            if(t[1][0]!=0&&t[1][0]==t[1][1]&&t[1][1]==t[1][2])
+                isSign[i][j-1] = isSign[i][j] = isSign[i][j+1] = 1,flag=1;
+            /*九宫格列处理*/
+            if(t[0][1]!=0&&t[0][1]==t[1][1]&&t[1][1]==t[2][1])
+                isSign[i-1][j] = isSign[i][j] = isSign[i+1][j] = 1,flag=1;
+            /*斜线处理*/
+            if(t[0][0]!=0&&t[0][0]==t[1][1]&&t[1][1]==t[2][2])
+                isSign[i-1][j-1] = isSign[i][j] = isSign[i+1][j+1] = 1,flag=1;
+            if(t[0][2]!=0&&t[0][2]==t[1][1]&&t[1][1]==t[2][0])
+                isSign[i-1][j+1] = isSign[i][j] = isSign[i+1][j-1] = 1,flag=1;
         }
-        while(SignBar(arr,bd,m,n))
+    return flag;
+}
+/*消除*/
+void ClearBar(char aj[][MAX],char isSign[][MAX],int m,int n)
+{
+    int i,j;
+    for(i=0;i<m;++i)
+        for(j=0;j<n;++j)
+            if(isSign[i][j]==1) aj[i][j]='\0';
+}
+/*下落*/
+void DropBar(char aj[][MAX],char isSign[][MAX],int m,int n)
+{
+    int i,j,x,t,flag;
+    for(j=0;j<n;++j)
+    {
+        x=m-1;
+        flag=1;
+        while(flag&&x>=0)
         {
+            if(aj[x][j]=='\0')
+            {
+                int z;
+                flag=0;
+                for(z=x;z>0;--z)
+                    if(aj[z][j]!='\0')
+                    {
+                        flag=1;
+                        for(t=x;t>0;--t)
+                            aj[t][j] = aj[t-1][j];
+                        aj[0][j] = '\0';
+                        ++x; /*使得x保持原位，再次检测这里是否还有可落下方块*/
+                        break;
+                    }
+            }
+          --x;
+         }
+    }
+}
+
+int main(void)
+{
+    char arr[MAX][MAX] = {0},
+            bd[MAX][MAX];
+    int i,j,z,m,n;
+    scanf("%d%d",&m,&n);
+    getchar();/*去除行末空格*/
+    for(i=0;i<m;++i)
+    {
+        for(j=0;j<n;++j)
+            arr[i][j] = getchar();
+        getchar(); /*去除行末回车*/
+    }
+    while(SignBar(arr,bd,m,n))
+    {
         ClearBar(arr,bd,m,n);
         DropBar(arr,bd,m,n);
-        }
-        for( i=0; i<m; ++i)
-        {
-            for(j=0; j<n; ++j)
-                printf("%c",arr[i][j]);
-            printf("\n");
-        }
-        return 0;
     }
+    for( i=0; i<m; ++i)
+    {
+        for(j=0; j<n; ++j)
+            printf("%c",arr[i][j]);
+        printf("\n");
+    }
+    return 0;
+}
+```

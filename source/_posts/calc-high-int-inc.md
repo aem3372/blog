@@ -31,55 +31,57 @@ date: 2013-02-07 00:24:47
 
 ## 我的代码
 
-    #include <stdio.h>
-    #include <string.h>
-    #define MAX 1001
-    int main(void)
+```cpp
+#include <stdio.h>
+#include <string.h>
+#define MAX 1001
+int main(void)
+{
+    int arr1[MAX] = { 0 }, arr2[MAX] = {0};
+    int length, temp, i, length1, length2, t, dv = 1, sign=1;
+    char str[MAX];   /* 读入数据，并进行预处理(计算出数字位数，并反向存放) */
+    scanf("%s", str);
+    length1 = strlen(str);
+    for (i = 0; i < length1; ++i)
+        arr1[i] = str[length1 - 1 - i] - '0';
+    scanf("%s", str);
+    length2 = strlen(str);
+    for (i = 0; i <  length2; ++i)
+        arr2[i] = str[length2 - 1 - i] - '0';
+    length = (length1 > length2) ? length1 : length2;
+    /*调整两个数组，保证arr1是大数字，arr2是小数字,如果想加快运行速度，可以用两个指针分别指向大数和小数来避免交换*/
+    if(length1<length2)
     {
-        int arr1[MAX] = { 0 }, arr2[MAX] = {0};
-        int length, temp, i, length1, length2, t, dv = 1, sign=1;
-        char str[MAX];   /* 读入数据，并进行预处理(计算出数字位数，并反向存放) */
-        scanf("%s", str);
-        length1 = strlen(str);
-        for (i = 0; i < length1; ++i)
-            arr1[i] = str[length1 - 1 - i] - '0';
-        scanf("%s", str);
-        length2 = strlen(str);
-        for (i = 0; i <  length2; ++i)
-            arr2[i] = str[length2 - 1 - i] - '0';
-        length = (length1 > length2) ? length1 : length2;
-        /*调整两个数组，保证arr1是大数字，arr2是小数字,如果想加快运行速度，可以用两个指针分别指向大数和小数来避免交换*/
-        if(length1<length2)
-        {
-            sign=-1;
-            for(i=0; i<length; ++i)
-                temp=arr1[i], arr1[i]=arr2[i], arr2[i]=temp;
-        }
-        else if(length1==length2)
-        {
-            for(i=length-1; i>=0; --i)
-                if(arr1[i]<arr2[i])
-                {
-                    sign=-1;
-                    for(i=0; i<length; ++i)
-                        temp=arr1[i], arr1[i]=arr2[i], arr2[i]=temp;
-                    break;
-                }
-        }
-        /* 算法核心内容 */
-        for (i = 0; i < length; ++i)
-        {
-            t = 10+arr1[i] - arr2[i] - 1 + dv;
-            arr1[i] = t % 10;
-            dv = t / 10;
-        }
-        /* 结束 */
-        if(sign == -1)
-            printf("-");
-        for(i=0; i<length-1; ++i)
-            if(arr1[length-1-i]!=0)
-                break;
-        for (i = i; i < length; ++i)
-            printf("%d", arr1[length - 1 -i]);
-        return 0;
+        sign=-1;
+        for(i=0; i<length; ++i)
+            temp=arr1[i], arr1[i]=arr2[i], arr2[i]=temp;
     }
+    else if(length1==length2)
+    {
+        for(i=length-1; i>=0; --i)
+            if(arr1[i]<arr2[i])
+            {
+                sign=-1;
+                for(i=0; i<length; ++i)
+                    temp=arr1[i], arr1[i]=arr2[i], arr2[i]=temp;
+                break;
+            }
+    }
+    /* 算法核心内容 */
+    for (i = 0; i < length; ++i)
+    {
+        t = 10+arr1[i] - arr2[i] - 1 + dv;
+        arr1[i] = t % 10;
+        dv = t / 10;
+    }
+    /* 结束 */
+    if(sign == -1)
+        printf("-");
+    for(i=0; i<length-1; ++i)
+        if(arr1[length-1-i]!=0)
+            break;
+    for (i = i; i < length; ++i)
+        printf("%d", arr1[length - 1 -i]);
+    return 0;
+}
+```

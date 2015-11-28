@@ -40,104 +40,106 @@ date: 2013-02-27 01:01:52
 
 ## 我的代码
 
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <string.h>
+```cpp
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-    /*寻找下标为n的右括号对应的左括号的下标，如果出现错误返回一个负数*/
-    int RguoteL(char* str,int n)
+/*寻找下标为n的右括号对应的左括号的下标，如果出现错误返回一个负数*/
+int RguoteL(char* str,int n)
+{
+    int c = 1,i = n,t;
+    if(str[n]!=')') return -1;
+    while(t=str[--i],i+1)
     {
-        int c = 1,i = n,t;
-        if(str[n]!=')') return -1;
-        while(t=str[--i],i+1)
-        {
-            if(t==')') ++c;
-            if(t=='(') --c;
-            if(c==0) return i;
-        }
-        return -2;
+        if(t==')') ++c;
+        if(t=='(') --c;
+        if(c==0) return i;
     }
-    /*返回表达式中优先级最低的符号下标，如果找不到运算符就返回-1*/
-    int FindC(char* str)
+    return -2;
+}
+/*返回表达式中优先级最低的符号下标，如果找不到运算符就返回-1*/
+int FindC(char* str)
+{
+    int length;
+    int i;
+    int k = -1;
+    length = strlen(str);
+    i = length - 1;
+    while(i>=0)
     {
-        int length;
-        int i;
-        int k = -1;
-        length = strlen(str);
-        i = length - 1;
-        while(i>=0)
-        {
-            if(str[i]==')') i = RguoteL(str,i);
-            if(str[i]=='+'||str[i]=='-') k = i;
-            if( (k!='+'&&k!='-') && (str[i]=='*'||str[i]=='/') ) k = i;
-            --i;
-        }
-        return k;
+        if(str[i]==')') i = RguoteL(str,i);
+        if(str[i]=='+'||str[i]=='-') k = i;
+        if( (k!='+'&&k!='-') && (str[i]=='*'||str[i]=='/') ) k = i;
+        --i;
     }
-    /*在两端添加圆括号*/
-    void Addguote(char* str)
+    return k;
+}
+/*在两端添加圆括号*/
+void Addguote(char* str)
+{
+    int i,length = strlen(str);
+    str[length+2]='\0';
+    str[length+1]=')';
+    for(i=length;i>0;--i)
+        str[i] = str[i-1];
+    str[0] = '(';
+}
+/*整理表达式并返回整理后的表达式,形参表第二个参数指向该表达式优先级最低的符号*/
+char GuoteCal(char* str,char* res)
+{
+    int k=FindC(str),length=strlen(str);
+    char *p=(char*)malloc(sizeof(char)*length),t[2];
+    char operL,operR,operNow=' ';
+    if(k>=0) operNow = str[k];
+    if(RguoteL(str,length-1)==0&&str[length-1]==')') /*被一对括号包含*/
     {
-        int i,length = strlen(str);
-        str[length+2]='\0';
-        str[length+1]=')';
-        for(i=length;i>0;--i)
-            str[i] = str[i-1];
-        str[0] = '(';
-    }
-    /*整理表达式并返回整理后的表达式,形参表第二个参数指向该表达式优先级最低的符号*/
-    char GuoteCal(char* str,char* res)
-    {
-        int k=FindC(str),length=strlen(str);
-        char *p=(char*)malloc(sizeof(char)*length),t[2];
-        char operL,operR,operNow=' ';
-        if(k>=0) operNow = str[k];
-        if(RguoteL(str,length-1)==0&&str[length-1]==')') /*被一对括号包含*/
-        {
-            strncpy(p,str+1,length-2);
-            p[length-2] = '\0';
-            operNow = GuoteCal(p,res); /*最外层括号应该被忽略，因此它的最低级运算符就是内部表达式的最低级运算符*/
-            free(p);
-            return operNow;
-        }
-        if(length==1) /*单变量*/
-        {
-            strncpy(p,str,1);
-            p[length] = '\0';
-            strcpy(res,p);
-            free(p);
-            return operNow;
-        }
-        /*找了到一个最低运算符号*/
-        char *pL=(char*)malloc(sizeof(char)*(k+1)),
-             *pR=(char*)malloc(sizeof(char)*(length-k));
-        strncpy(pL,str,k);
-        pL[k]='\0';
-        strncpy(pR,str+k+1,length-k-1);
-        pR[length-k-1]='\0';
-        /*获取左右符号*/
-        operL = GuoteCal(pL,pL);
-        operR = GuoteCal(pR,pR);
-        /*根据四则运算判断是否需要括号*/
-        if((operNow=='-'||operNow=='*')&&(operR=='+'||operR=='-')) Addguote(pR);
-        if((operNow=='*'||operNow=='/')&&(operL=='+'||operL=='-')) Addguote(pL);
-        if(operNow=='/'&&operR!=' ') Addguote(pR);
-        /*组合整理后的表达式*/
-        strcpy(p,pL);
-        t[0]=operNow;t[1]='\0';
-        strcat(p,t);
-        strcat(p,pR);
-        strcpy(res,p);
-        /*释放动态内存*/
+        strncpy(p,str+1,length-2);
+        p[length-2] = '\0';
+        operNow = GuoteCal(p,res); /*最外层括号应该被忽略，因此它的最低级运算符就是内部表达式的最低级运算符*/
         free(p);
-        free(pL);
-        free(pR);
         return operNow;
     }
-
-    int main(void)
+    if(length==1) /*单变量*/
     {
-        char str[]="(((a+b)*f)-(i/j))",s[100];
-        GuoteCal(str,s);
-        printf("%s",s);
-        return 0;
+        strncpy(p,str,1);
+        p[length] = '\0';
+        strcpy(res,p);
+        free(p);
+        return operNow;
     }
+    /*找了到一个最低运算符号*/
+    char *pL=(char*)malloc(sizeof(char)*(k+1)),
+         *pR=(char*)malloc(sizeof(char)*(length-k));
+    strncpy(pL,str,k);
+    pL[k]='\0';
+    strncpy(pR,str+k+1,length-k-1);
+    pR[length-k-1]='\0';
+    /*获取左右符号*/
+    operL = GuoteCal(pL,pL);
+    operR = GuoteCal(pR,pR);
+    /*根据四则运算判断是否需要括号*/
+    if((operNow=='-'||operNow=='*')&&(operR=='+'||operR=='-')) Addguote(pR);
+    if((operNow=='*'||operNow=='/')&&(operL=='+'||operL=='-')) Addguote(pL);
+    if(operNow=='/'&&operR!=' ') Addguote(pR);
+    /*组合整理后的表达式*/
+    strcpy(p,pL);
+    t[0]=operNow;t[1]='\0';
+    strcat(p,t);
+    strcat(p,pR);
+    strcpy(res,p);
+    /*释放动态内存*/
+    free(p);
+    free(pL);
+    free(pR);
+    return operNow;
+}
+
+int main(void)
+{
+    char str[]="(((a+b)*f)-(i/j))",s[100];
+    GuoteCal(str,s);
+    printf("%s",s);
+    return 0;
+}
+```

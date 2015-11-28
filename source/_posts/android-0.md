@@ -17,69 +17,75 @@ date: 2015-05-10 00:04:18
 
 res/values/attrs.xml
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <resources>
-        <declare-styleable name="EditTextPlus">
-            <attr name="deleteButton" format="reference" />
-        </declare-styleable>
-    </resources>
-
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EditTextPlus">
+        <attr name="deleteButton" format="reference" />
+    </declare-styleable>
+</resources>
+```
 
 res/layout/main_layout.xml
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout 
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/RelativeLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true" >
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentLeft="true" >
 
-        <com.aemiot.test.View.EditTextPlus
-            android:id="@+id/editText1"
-            style="@style/EditTextPlus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="162dp"
-            android:ems="10"
-            android:singleLine="true" />
+    <com.aemiot.test.View.EditTextPlus
+        android:id="@+id/editText1"
+        style="@style/EditTextPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="162dp"
+        android:ems="10"
+        android:singleLine="true" />
 
-        <com.aemiot.test.View.EditTextPlus
-            android:id="@+id/editText2"
-            style="@style/EditTextPlusNight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/editText1"
-            android:layout_centerVertical="true"
-            android:ems="10"
-            android:singleLine="true" />
+    <com.aemiot.test.View.EditTextPlus
+        android:id="@+id/editText2"
+        style="@style/EditTextPlusNight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:singleLine="true" />
 
-    </RelativeLayout>
+</RelativeLayout>
+```
 
 res/values/styles.xml
 
-    <resources 
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:aem="http://schemas.android.com/apk/res/com.aemiot.test" >
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aem="http://schemas.android.com/apk/res/com.aemiot.test" >
 
-        <!-- EditTextPlus -->
-        <style name="EditTextPlus">
-            <!-- 如果这里试图用aem:deleteButton将会报告Error: No resource found that matches the given name: attr 'aem:deleteButton'. -->
-            <item name="deleteButton">@drawable/editviewplus_deletebutton</item>
-            <item name="android:background">@drawable/editviewplus_background</item>
-            <item name="android:textColor">@android:color/black</item>
-        </style>
-        
-        <style name="EditTextPlusNight">
-            <item name="deleteButton">@drawable/editviewplus_deletebutton_night</item>
-            <item name="android:background">@drawable/editviewplus_background_night</item>    
-            <item name="android:textColor">@android:color/white</item> 
-        </style>
-        
-    </resources>
-
+    <!-- EditTextPlus -->
+    <style name="EditTextPlus">
+        <!-- 如果这里试图用aem:deleteButton将会报告Error: 
+             No resource found that matches the given name: attr 'aem:deleteButton'. -->
+        <item name="deleteButton">@drawable/editviewplus_deletebutton</item>
+        <item name="android:background">@drawable/editviewplus_background</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    
+    <style name="EditTextPlusNight">
+        <item name="deleteButton">@drawable/editviewplus_deletebutton_night</item>
+        <item name="android:background">@drawable/editviewplus_background_night</item>    
+        <item name="android:textColor">@android:color/white</item> 
+    </style>
+    
+</resources>
+```
 
 ## 解决办法
 

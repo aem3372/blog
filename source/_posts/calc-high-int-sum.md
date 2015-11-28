@@ -27,34 +27,36 @@ C语言的基本数据类型提供的可计算范围非常有限的，需要处�
 
 ## 我的代码
 
-    #include<stdio.h>
-    #include<string.h>
-    #define MAX 1001
-    int main(void)
+```cpp
+#include<stdio.h>
+#include<string.h>
+#define MAX 1001
+int main(void)
+{
+    int arr1[MAX]={0},arr2[MAX]={0};
+    int length,i,length1,length2,t,dv = 0;
+    char str[MAX];
+    /*读入数据，并进行预处理(计算出数字位数，并方向存放)*/
+    scanf("%s",str);
+    length1 = strlen(str);
+    for(i=0; i<length1; ++i)
+        arr1[i] = str[length1-1-i] - '0';
+    scanf("%s",str);
+    length2 = strlen(str);
+    for(i=0; i<length2; ++i)
+        arr2[i] = str[length2-1-i] - '0';
+    length = (length1>length2)?length1:length2;
+    /*算法核心内容*/
+    for(i=0; i<length; ++i)
     {
-        int arr1[MAX]={0},arr2[MAX]={0};
-        int length,i,length1,length2,t,dv = 0;
-        char str[MAX];
-        /*读入数据，并进行预处理(计算出数字位数，并方向存放)*/
-        scanf("%s",str);
-        length1 = strlen(str);
-        for(i=0; i<length1; ++i)
-            arr1[i] = str[length1-1-i] - '0';
-        scanf("%s",str);
-        length2 = strlen(str);
-        for(i=0; i<length2; ++i)
-            arr2[i] = str[length2-1-i] - '0';
-        length = (length1>length2)?length1:length2;
-        /*算法核心内容*/
-        for(i=0; i<length; ++i)
-        {
-            t = arr1[i] + arr2[i] +dv;
-            arr1[i] = t % 10;
-            dv = t / 10;
-        }
-        if(dv != 0) arr1[length++] = dv;
-        /*结束*/
-        for(i=0; i<length; ++i)
-            printf("%d",arr1[length-1-i]);
-        return 0;
+        t = arr1[i] + arr2[i] +dv;
+        arr1[i] = t % 10;
+        dv = t / 10;
     }
+    if(dv != 0) arr1[length++] = dv;
+    /*结束*/
+    for(i=0; i<length; ++i)
+        printf("%d",arr1[length-1-i]);
+    return 0;
+}
+```

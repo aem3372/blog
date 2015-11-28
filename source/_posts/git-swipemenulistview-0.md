@@ -1,22 +1,20 @@
-title: '[fix]SwipeMenuListView派生Adapter造成滚动显示异常'
+title: 'SwipeMenuListView派生Adapter造成滚动显示异常'
 id: 1518
 categories:
-  - 应用开发
+  - android
 date: 2015-05-14 23:47:39
 tags:
 ---
 
-[note title="SwipeMenuListView介绍"]
-一个针对ListView item的侧滑菜单。
-项目地址：[https://github.com/baoyongzhang/SwipeMenuListView](https://github.com/baoyongzhang/SwipeMenuListView "https://github.com/baoyongzhang/SwipeMenuListView")
-[/note]
+因为测试时，暂时没有将Adapter的getView写成最大化利用原View的方式，而直接填充了一个新View，所以发现了项目的一个bug。该bug表现为在getView时传入旧View，你却返回了新View，新View不能被利用。现已将bug修复并提交到原仓库。
 
-因为测试时，暂时没有将Adapter的getView写成最大化利用原View的方式，而直接填充了一个新View，所以发现了项目的一个bug。
-该bug表现为在getView时传入旧View，你却返回了新View，新View不能被利用。
-现已将bug修复并提交到原仓库。
+> 项目地址：[SwipeMenuListView](https://github.com/baoyongzhang/SwipeMenuListView "https://github.com/baoyongzhang/SwipeMenuListView")
+
+<!--more-->
 
 原始代码（有bug）：
-[code lang="java"]
+
+```java
 public class SwipeMenuAdapter implements WrapperListAdapter,
 		OnSwipeItemClickListener {
 
@@ -52,14 +50,12 @@ public class SwipeMenuAdapter implements WrapperListAdapter,
 	}
 	//...
 }
-[/code]
+```
 
 改写逻辑修正：
-[code lang="java"]
+
+```java
 /**
- * 
- * @author aem3372
- * @date 2015-5-14
  * 
  * fix: Display abnormal, When mAdapter return View different from 
  *      convertView and convertView is not null
@@ -94,4 +90,4 @@ public View getView(int position, View convertView, ViewGroup parent) {
 	}
 	return layout;
 }
-[/code]
+```

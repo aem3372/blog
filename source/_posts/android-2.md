@@ -33,47 +33,55 @@ date: 2015-05-26 00:09:15
 
 定义容器
 
-    public class MyClass extends LinearLayout{
-        /**
-         * Finalize inflating a view from XML.  This is called as the last phase
-         * of inflation, after all child views have been added.
-         *
-         * <p>Even if the subclass overrides onFinishInflate, they should always be
-         * sure to call the super method, so that we get called.
-         */
-        /*子视图被添加后才能获得Layout XML中定义的子视图。跟踪框架源码，可以看到
-          该方法在XML中所有子视图被添加完成后调用，因此可以在这个方法中获取子视图。
-         */
-        @Override
-        protected void onFinishInflate() {
-            super.onFinishInflate();
-                
-        }
-
-        // ... 
+```java
+public class MyClass extends LinearLayout{
+    /**
+     * Finalize inflating a view from XML.  This is called as the last phase
+     * of inflation, after all child views have been added.
+     *
+     * <p>Even if the subclass overrides onFinishInflate, they should always be
+     * sure to call the super method, so that we get called.
+     */
+    /*子视图被添加后才能获得Layout XML中定义的子视图。跟踪框架源码，可以看到
+      该方法在XML中所有子视图被添加完成后调用，因此可以在这个方法中获取子视图。
+     */
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+            
     }
+
+    // ... 
+}
+```
 
 对应的XML
 
-    <package.MyClass xmlns:android="http://schemas.android.com/apk/res/android">
-        <View android:id="@+id/view1"/>
-        <View android:id="@+id/view2"/>
-        <!-- ... -->
-    </package.MyClass>
+```xml
+<package.MyClass xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@+id/view1"/>
+    <View android:id="@+id/view2"/>
+    <!-- ... -->
+</package.MyClass>
+```
 
 使用时
 
-    <include 
-        android:id="@+id/layout1"
-        layout="@layout/mylayout" />
-    <include 
-        android:id="@+id/layout2"
-        layout="@layout/mylayout" />
+```xml
+<include 
+    android:id="@+id/layout1"
+    layout="@layout/mylayout" />
+<include 
+    android:id="@+id/layout2"
+    layout="@layout/mylayout" />
+```
 
 插句题外话，因为include导致内部id重复，无法在主布局节点上直接使用id找到特定元素。只能间接查找，例如：
 
-    View view11 = findViewById(R.id.layout1).findViewById(R.id.view1);
-    View view12 = findViewById(R.id.layout1).findViewById(R.id.view1);
+```java
+View view11 = findViewById(R.id.layout1).findViewById(R.id.view1);
+View view12 = findViewById(R.id.layout1).findViewById(R.id.view1);
+```
 
 但是需要知道的是，获取这些子元素应该是不合理的，它很可能会破坏原有逻辑。
 
@@ -95,33 +103,37 @@ include标签中无法设置布局参数，布局参数是被包含布局根节�
 
 对应的XML
 
-    <marge xmlns:android="http://schemas.android.com/apk/res/android">
-        <View android:id="@+id/view1"/>
-        <View android:id="@+id/view2"/>
-        <!-- ... -->
-    </marge>
+```xml
+<marge xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@+id/view1"/>
+    <View android:id="@+id/view2"/>
+    <!-- ... -->
+</marge>
+```
 
 使用时
 
-    <package.MyClass
-        android:id="@+id/layout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-            
-        <include 
-            layout="@layout/mylayout" />
+```xml
+<package.MyClass
+    android:id="@+id/layout1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+        
+    <include 
+        layout="@layout/mylayout" />
 
-    </package.MyClass>
+</package.MyClass>
 
-    <package.MyClass
-        android:id="@+id/layout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-            
-        <include 
-            layout="@layout/mylayout" />
+<package.MyClass
+    android:id="@+id/layout2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+        
+    <include 
+        layout="@layout/mylayout" />
 
-    </package.MyClass>
+</package.MyClass>
+```
 
 **优点**
 
