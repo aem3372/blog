@@ -47,31 +47,31 @@ date: 2013-01-19 05:32:24
 
 ## 接下来附上一些有趣的图
 
-**长得真有趣的石头人**
+### 长得真有趣的石头人
 
 [![screen2013_1_15_11_23_42](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_11_23_42.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_11_23_42.jpg)
 
-**草谷原来真的很漂亮**
+### 草谷原来真的很漂亮
 
 [![screen2013_1_15_11_38_15](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_11_38_15.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_11_38_15.jpg)
 
-**瑾轩和瑕的合击技**
+### 瑾轩和瑕的合击技
 
 [![screen2013_1_15_6_10_32](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_6_10_32.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_6_10_32.jpg)
 
-**凌波和龙溟的合击技**
+### 凌波和龙溟的合击技
 
 [![screen2013_1_15_12_44_38](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_12_44_38.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_12_44_38.jpg)
 
-**暧昧时刻**
+### 暧昧时刻
 
 [![screen2013_1_15_13_17_19](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_13_17_19.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_15_13_17_19.jpg)
 
-**血手暴走**
+### 血手暴走
 
 [![screen2013_1_16_14_27_40](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_16_14_27_40.jpg)](http://www.aemiot.com/wp-content/uploads/2013/01/screen2013_1_16_14_27_40.jpg)
 
 --- 
 总的来说呢，这游戏做的还不错，荒废3天寒假玩仙剑算是值了，该交代的都交代清楚了，剧情也很感人（-_-！又是悲剧），另外最终BOSS也太弱了吧。
 还有不得不吐槽下价格，大量使用仙五素材，还和仙五一样的价格！！
-据说豪华版出了问题，葫芦MP3内存标称2Gb，实际只有100Mb。
+据说豪华版出了问题，葫芦MP3内存标称2GB，实际只有100MB。

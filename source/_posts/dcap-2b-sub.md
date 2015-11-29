@@ -92,13 +92,13 @@ $$
 
 ```cpp
 struct Data{
-char cls[3];   /*元器件符号*/
-int   no,      /*元器件编号*/
-      beg,     /*起始结点*/
-      end;     /*终止结点*/
-      /*起始结点到终止结点的方向为假定的正方向*/
-float val,     /*元器件属性值*/
-      other;   /*保留信息*/
+    char cls[3];   /*元器件符号*/
+    int   no,      /*元器件编号*/
+          beg,     /*起始结点*/
+          end;     /*终止结点*/
+          /*起始结点到终止结点的方向为假定的正方向*/
+    float val,     /*元器件属性值*/
+          other;   /*保留信息*/
 };
 ```
 
@@ -145,11 +145,11 @@ $$
 
 [![dcap-shu](http://www.aemiot.com/wp-content/uploads/2013/06/dcap-shu.jpg)](http://www.aemiot.com/wp-content/uploads/2013/06/dcap-shu.jpg)
 
-**生成树**
+### 生成树
 
 [![dcap-yushu](http://www.aemiot.com/wp-content/uploads/2013/06/dcap-yushu.jpg)](http://www.aemiot.com/wp-content/uploads/2013/06/dcap-yushu.jpg)
 
-**它的余树**
+### 它的余树
 
 假设我们得到了这样的一棵树以及它的余树，我们从余数中选择一条连枝加入到树中，想要判断它形成的环，我们需要在树的最基本结构中增加一个指向父节点的指针和一个表示当前层数的整数。这样我们在寻找它形成的环时，只要在树中找到加入的连枝的两个端点，然后一直向上返回，直到两个点汇合，期间经过的路径加上连枝本身就是一个环。
 
@@ -187,4 +187,4 @@ struct Node{
 既然所有步骤都已经分析过了，那么编程也就是可行的了。赞一个，神奇的编程，思考的乐趣~~
 如有算法上的改进，欢迎交流。
 
-依据上述解决方案得到的简易DCAP分析软件：[http://www.aemiot.com/simple-dcap.html](http://www.aemiot.com/simple-dcap.html "简易电路辅助分析软件|DCAP")
+依据上述解决方案得到的简易DCAP分析软件：[传送门](http://www.aemiot.com/simple-dcap.html "简易电路辅助分析软件|DCAP")

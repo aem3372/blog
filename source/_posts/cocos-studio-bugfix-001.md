@@ -9,22 +9,21 @@ date: 2014-08-30 03:41:35
 ---
 
 ## 开发环境
+
 库版本： Cocos2d-x 3.0
 编辑器版本： Cocos Studio 1.6.0
 
----
+## 异常描述
 
-**异常描述： 取消补间动画后，在编辑器中看到已经没有了补间动画，但是将动画导出后加载到程序中还是有补间动画的。**
+取消补间动画后，在编辑器中看到已经没有了补间动画，但是将动画导出后加载到程序中还是有补间动画的。
 
 [![CocosStudio-001](http://www.aemiot.com/wp-content/uploads/2014/08/CocosStudio-001.png)](http://www.aemiot.com/wp-content/uploads/2014/08/CocosStudio-001.png)
 
-用记事本打开导出的Json文件，发现存在属性 "tweenFrame": false。 可以看到导出的信息是完整的。
-
-那么问题就在程序上，跟踪程序，发现成员变量isTween一直是true。 继续跟踪，发现**CCDatas.cpp中FrameData::copy函数没有对isTween进行拷贝**。所以在函数中加上isTween的拷贝过程就好。
+用记事本打开导出的Json文件，发现存在属性 "tweenFrame": false。 可以看到导出的信息是完整的。那么问题就在程序上，跟踪程序，发现成员变量isTween一直是true。 继续跟踪，发现**CCDatas.cpp中FrameData::copy函数没有对isTween进行拷贝**。所以在函数中加上isTween的拷贝过程就好。
 
 <!-- more -->
 
-修正后的代码:
+## 修正后的代码
 
 ```cpp
 //CCDatas.cpp

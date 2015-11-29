@@ -14,6 +14,8 @@ date: 2013-01-14 21:11:29
 
 使用程序，验证一下
 
+<!--more-->
+
 ```cpp
 #include <stdio.h>
 int main(void)

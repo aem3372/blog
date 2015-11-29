@@ -1,4 +1,4 @@
-title: 'Graphivz中文乱码的解决过程|关于编码的那些事'
+title: 'Graphivz中文乱码的解决过程'
 tags:
   - Graphivz
   - 中文乱码
@@ -11,11 +11,9 @@ date: 2014-03-05 22:56:28
 我在Windows上装了Graphivz，当我将中文输入进Dot文件中，并运行指令`dot grep.dot -Tpng -o grep.png`
 
 试图生成例图时发现中文无法正常显示。
-于是首先就想到了Windows对新建的文本文档保存默认是用ANSI(GBK)编码的，并且给出了警告：
-**Warning: Invalid 2-byte UTF8 found in input of graph G - treated as Latin-1\. Perhaps "-Gcharset=latin1" is needed?**
+于是首先就想到了Windows对新建的文本文档保存默认是用ANSI(GBK)编码的，并且给出了警告`Warning: Invalid 2-byte UTF8 found in input of graph G - treated as Latin-1\. Perhaps "-Gcharset=latin1" is needed?`
 
-于是，我试图将文档编码改为UTF8，于是我用notepad.exe打开文档另存为，然后编码选择UTF8，重新运行指令，得到如下警告：
-**Warning: grep.dot: syntax error in line 1 near '锘縟igraph'。**
+于是，我试图将文档编码改为UTF8，于是我用notepad.exe打开文档另存为，然后编码选择UTF8，重新运行指令，得到如下警告`Warning: grep.dot: syntax error in line 1 near '锘縟igraph'。`
 
 <!--more-->
 

@@ -15,7 +15,7 @@ date: 2015-05-10 00:04:18
 
 <!--more-->
 
-res/values/attrs.xml
+### res/values/attrs.xml
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -26,7 +26,7 @@ res/values/attrs.xml
 </resources>
 ```
 
-res/layout/main_layout.xml
+### res/layout/main_layout.xml
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -61,7 +61,7 @@ res/layout/main_layout.xml
 </RelativeLayout>
 ```
 
-res/values/styles.xml
+### res/values/styles.xml
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
