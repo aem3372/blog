@@ -8,7 +8,7 @@ categories:
 date: 2014-06-06 20:47:17
 ---
 
-在cocos2dx-2.x的实现中，公共基类是CCObject。
+在cocos2dx-2.x的实现中，公共基类是`CCObject`。
 打开[cocos-root]/cocos2dx/cocoa/CCObject.h查看定义：
 
 <!-- more -->
@@ -62,8 +62,8 @@ public:
 };
 ```
 
-CCObject继承自CCCopying(没有其他类派生自CCCopying，这里的派生其实是接口机制，其功能很单一，所以不会称CCCopying是公共基类)。
-CCCopying的唯一成员函数，其默认实现简单到只通过一个断言提示一个未实现。
+`CCObject`继承自`CCCopying`(没有其他类派生自`CCCopying`，这里的派生其实是接口机制，其功能很单一，所以不会称`CCCopying`是公共基类)。
+`CCCopying`的唯一成员函数，其默认实现简单到只通过一个断言提示一个未实现。
 
 ```cpp
 CCObject* CCCopying::copyWithZone(CCZone *pZone)
@@ -74,10 +74,10 @@ CCObject* CCCopying::copyWithZone(CCZone *pZone)
 }
 ```
 
-CCObject为对象提供了拷贝机制、内存管理机制以及一些基本逻辑。
+`CCObject`为对象提供了拷贝机制、内存管理机制以及一些基本逻辑。
 其中我认为一个设计不合理的地方，就是绑定了过多功能，而且设计人员也考虑到了不是每个派生类都需要拷贝机制，但是却强制实现了一个默认接口，而该实现居然是提示未生实现。（因此在cocos2dx-3.x中被重写）
 
-但是在cocos2dx-3.x之中就找不到CCObject类了，取而代之的是Ref类。
+但是在cocos2dx-3.x之中就找不到`CCObject`了，取而代之的是`Ref`。
 在[cocos-root]/cocos/base下可以找到CCRef.h文件，查看定义：
 
 ```cpp
@@ -194,5 +194,5 @@ public:
 };
 ```
 
-这次的Ref就规范得多，首先为拷贝定义了clonable接口，Ref也没有去实现clonable接口，这就相当于将拷贝机制独立出来了。如果一个继承Ref的类需要拷贝功能，就要自己实现clonable接口。
-而Ref作为公共基类提供内存管理功能，以及和Lua脚本通信的数据维护。
+这次的`Ref`就规范得多，首先为拷贝定义了`Clonable`接口，`Ref`也没有去实现`Clonable`接口，这就相当于将拷贝机制独立出来了。如果一个继承`Ref`的类需要拷贝功能，就要自己实现`Clonable`接口。
+而`Ref`作为公共基类提供内存管理功能，以及和Lua脚本通信的数据维护。

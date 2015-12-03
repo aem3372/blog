@@ -19,7 +19,7 @@ date: 2014-08-30 03:41:35
 
 [![CocosStudio-001](http://www.aemiot.com/wp-content/uploads/2014/08/CocosStudio-001.png)](http://www.aemiot.com/wp-content/uploads/2014/08/CocosStudio-001.png)
 
-用记事本打开导出的Json文件，发现存在属性 "tweenFrame": false。 可以看到导出的信息是完整的。那么问题就在程序上，跟踪程序，发现成员变量isTween一直是true。 继续跟踪，发现**CCDatas.cpp中FrameData::copy函数没有对isTween进行拷贝**。所以在函数中加上isTween的拷贝过程就好。
+用记事本打开导出的Json文件，发现存在属性 `"tweenFrame": false`。 可以看到导出的信息是完整的。那么问题就在程序上，跟踪程序，发现成员变量`isTween`一直是`true`。 继续跟踪，发现CCDatas.cpp中`FrameData::copy`函数没有对`isTween`进行拷贝。所以在函数中加上`isTween`的拷贝过程就好。
 
 <!-- more -->
 

@@ -6,7 +6,7 @@ date: 2015-05-14 23:47:39
 tags:
 ---
 
-因为测试时，暂时没有将Adapter的getView写成最大化利用原View的方式，而直接填充了一个新View，所以发现了项目的一个bug。该bug表现为在getView时传入旧View，你却返回了新View，新View不能被利用。现已将bug修复并提交到原仓库。
+因为测试时，暂时没有将`Adapter`的`getView`写成最大化利用原`View`的方式，而直接填充了一个新`View`，所以发现了项目的一个bug。该bug表现为在`getView`时传入旧`View`，你却返回了新`View`，新`View`不能被利用。现已将bug修复并提交到原仓库。
 
 > 项目地址：[SwipeMenuListView](https://github.com/baoyongzhang/SwipeMenuListView "https://github.com/baoyongzhang/SwipeMenuListView")
 

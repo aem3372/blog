@@ -187,4 +187,7 @@ struct Node{
 既然所有步骤都已经分析过了，那么编程也就是可行的了。赞一个，神奇的编程，思考的乐趣~~
 如有算法上的改进，欢迎交流。
 
-依据上述解决方案得到的简易DCAP分析软件：[传送门](http://www.aemiot.com/simple-dcap.html "简易电路辅助分析软件|DCAP")
+
+## 下载
+
+- [Demo下载](http://www.aemiot.com/download/简易DCAP.zip "Demo下载")
