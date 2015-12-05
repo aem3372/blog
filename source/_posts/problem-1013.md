@@ -1,5 +1,6 @@
 title: '使用数论知识消除模拟'
 tags:
+  - HDU
   - 数论
 id: 676
 categories:

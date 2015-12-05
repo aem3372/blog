@@ -23,46 +23,46 @@ date: 2013-06-09 01:49:32
 列出n-1 = 3个KCL（基尔霍夫电流方程）
 
 $$
- \left\\{
-\begin{aligned}
+\\left\\{
+\\begin{aligned}
 -I1-I5-I3 & = & 0 \\\\
  I1+I2    & = & 0 \\\\
  I5-I4    & = & 0
-\end{aligned}
-\right.
+\\end{aligned}
+\\right.
 $$
 
 列出b-(n-1) = 2个KVL（基尔霍夫电压方程）
 
 
 $$
- \left\\{
+\\left\\{
 \begin{aligned}
 -U1+U2+U3 & = & 0 \\\\
 -U3+U4+U5 & = & 0
-\end{aligned}
-\right.
+\\end{aligned}
+\\right.
 $$
 
 列出b = 5个CRL（元器件电压电流方程）
 
 $$
- \left\\{
-\begin{aligned}
+\\left\\{
+\\begin{aligned}
 U1 & = & 5 \\\\
 U2 & = & I2 \* 1 \\\\
 U3 & = & I3 \* 1 \\\\
 U4 & = & I4 \* 2 \\\\
 U5 & = & 10
-\end{aligned}
-\right.
+\\end{aligned}
+\\right.
 $$
     
 联立上述方程解得
 
 $$
-\left\\{
-\begin{aligned}
+\\left\\{
+\\begin{aligned}
 I1 & = & -1 \\\\
 I2 & = &  1 \\\\
 I3 & = &  4 \\\\
@@ -73,8 +73,8 @@ U2 & = &  1 \\\\
 U3 & = &  4 \\\\
 U4 & = & -6 \\\\
 U4 & = & -6
-\end{aligned}
-\right.
+\\end{aligned}
+\\right.
 $$
 
 
@@ -111,13 +111,13 @@ struct Data{
 利用电路拓扑信息可以直接填充一个关联矩阵，不难发现关联矩阵的每一行就是一个KCL的系数方程。以上述电路图为例，我们可以得到如下关联矩阵：
 
 $$
-\begin{bmatrix}
+\\begin{bmatrix}
 I1 & I2 & I3 & I4 & I5 \\\\
 -1 &  0 & -1 &  0 & -1 \\\\
  1 &  1 &  0 &  0 &  0 \\\\
  0 & -1 &  1 &  1 &  0 \\\\
  0 &  0 &  0 & -1 &  1
-\end{bmatrix}
+\\end{bmatrix}
 $$
 
 不难发现关联矩阵的每一行都是一个KCL方程且它们任意n-1个方程都是线性无关的，那么我们从中任选n-1个方程即可。
@@ -129,12 +129,12 @@ $$
 例如，图中电路对应的回路矩阵应为
 
 $$
-\begin{bmatrix}
+\\begin{bmatrix}
 V1 & V2 & V3 & V4 & V5 \\\\
 -1 &  1 &  1 &  0 &  0 \\\\
  0 &  0 & -1 &  1 &  1 \\\\
 -1 &  1 &  0 &  1 &  1
-\end{bmatrix}
+\\end{bmatrix}
 $$
 
 同理，这个回路矩阵的每一行都是一个KVL方程，任意b-（n-1）个方程都是线性无关的，我们只需要其中的任意b-（n-1）个方程。因为完全构造这个矩阵较为复杂，所以我们只构造我们所需要的b-（n-1）行即可。
