@@ -1,6 +1,9 @@
-title: Android Databinding Library 学习笔记(一)
-date: 2015-12-26 21:02:25
+title: Android Databinding Library 学习笔记
+date: 2016-01-01 01:41:13
+categories:
+  - android
 tags:
+  - binding
 ---
 
 ## DataBinding
@@ -9,7 +12,9 @@ DataBinding Library提供了一套数据绑定机制，配合Android Gradle插�
 
 DataBinding解决了操纵UI的繁琐，同时为支持MVVM模式迈出了一步。以前操纵的是View控件，现在操纵的是ViewModel，关注点的转移对单元测试也更加友好了。
 
-> DataBinding Demo - [https://github.com/aem3372/DataBindingDemo](https://github.com/aem3372/DataBindingDemo "DataBinding相关源码")
+> DataBinding Demo Set - [https://github.com/aem3372/DataBindingDemo](https://github.com/aem3372/DataBindingDemo "DataBinding相关源码")
+
+<!--more-->
 
 ## 配置DataBinding
 
@@ -58,7 +63,6 @@ android {
 
 ## 初次尝试
 
-Demo：SimpleActivity。
 新建一个layout，命名为activity_simple.xml。布局内声明`String`类型的`tip`变量，`TextView`直接根据`tip`显示。
 
 ```xml
@@ -101,9 +105,11 @@ public class SimpleActivity extends AppCompatActivity {
     }
 }
 ```
+
+> Demo：[SimpleActivity](https://github.com/aem3372/DataBindingDemo/blob/master/app/src/main/java/com/aemiot/demo/databinding/activity/SimpleActivity.java "SimpleActivity")
+
 ## 更灵活的Layout
 
-Demo：ExpressionActivity。
 在`@{}`中除了能访问之前声明的变量，还能获取其他xml中定义的属性值以及使用java表达式计算。
 
 例如，
@@ -134,11 +140,11 @@ Demo：ExpressionActivity。
 
 注意，属性能接收的类型有限制。
 
+> Demo：[ExpressionActivity](https://github.com/aem3372/DataBindingDemo/blob/master/app/src/main/java/com/aemiot/demo/databinding/activity/ExpressionActivity.java "ExpressionActivity")
 
 ## 更多的类型
 
-Demo：MutilateTypeActivity。
-如果要使用更多类型，需要在声明变量前使用import标签导入（java.lang中的类已经默认导入），这其中包括自定义的类型。
+如果要使用更多类型，需要在声明变量前使用`import`标签导入（java.lang中的类已经默认导入），这其中包括自定义的类型。
 
 ```xml
 <data>
@@ -165,10 +171,11 @@ Demo：MutilateTypeActivity。
 </data>
 ```
 
+> Demo：[MutilateTypeActivity](https://github.com/aem3372/DataBindingDemo/blob/master/app/src/main/java/com/aemiot/demo/databinding/activity/MutilateTypeActivity.java "MutilateTypeActivity")
+
 ## 自定义Binding类名字
  
-Demo：CustomBindingNameActivity。
-如果想要自定义Binding类的名字，而不是根据默认规则生成，在data标签上通过class属性指定即可。
+如果想要自定义Binding类的名字，而不是根据默认规则生成，在`data`标签上通过`class`属性指定即可。
 
 ```xml
 <data class="CustomClassNameBinding">
@@ -176,9 +183,10 @@ Demo：CustomBindingNameActivity。
 </data>
 ```
 
+> Demo：[CustomBindingNameActivity](https://github.com/aem3372/DataBindingDemo/blob/master/app/src/main/java/com/aemiot/demo/databinding/activity/CustomBindingNameActivity.java "CustomBindingNameActivity")
+
 ## 事件绑定
 
-Demo：EventBindingActivity。
 对于click、longClick等事件，可以绑定类方法到属性值上，要求是与事件对应的Listener中的方法参数、返回值需要一致。
 
 ```java
@@ -220,13 +228,13 @@ public class ButtonHandler {
     </FrameLayout>
 </layout>
 ```
+> Demo：[EventBindingActivity](https://github.com/aem3372/DataBindingDemo/blob/master/app/src/main/java/com/aemiot/demo/databinding/activity/EventBindingActivity.java "EventBindingActivity")
 
 ## 属性Setter
 
-对于值为`@{}`格式的控件属性默认会寻找控件中对应的set方法（这时会忽略xml中的命名空间，但要求值的类型和set方法中参数一致）。
+对于值为`@{}`格式的控件属性默认会寻找控件中对应的setter方法（这时会忽略xml中的命名空间，但要求值的类型和setter方法中参数一致）。
 
-
-新建CustomView，以便观察属性是否设置成功。
+新建`CustomView`，以便观察属性是否设置成功。
 
 ```java
 public class CustomView extends TextView {
@@ -249,7 +257,7 @@ public class CustomView extends TextView {
 }
 ```
 
-在Layout文件中使用CustomView，并设置属性ui:customAttribute。
+在Layout文件中使用`CustomView`，并设置属性`ui:customAttribute`。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -272,8 +280,97 @@ public class CustomView extends TextView {
 </layout>
 ```
 
-正是这样的方案使得DataBinding Library向前兼容。但是android命名空间下的属性仍然有一些没有对应的set方法，因此存在一组adapters来为各个控件指定这些属性对应的方法名。
+正是这样的方案使得DataBinding Library向前兼容。但是android命名空间下的属性仍然有一些没有对应的setter方法，因此存在一组adapters来为各个控件指定这些属性对应的方法名。
 
+> Demo：[AttributeSetterActivity](https://github.com/aem3372/DataBindingDemo/blob/master/app/src/main/java/com/aemiot/demo/databinding/activity/AttributeSetterActivity.java "AttributeSetterActivity")
+
+## 动态绑定
+
+DataBinding类支持在运行时和视图实例进行绑定，只需要调用它的`bind`方法即可。这一点正好配合`RecyclerView`可以完成很多灵活的布局。
+
+`RecyclerAdapter`可以按如下方式实现，其中对于`ViewHolder`来说只需要持有Binding类就可以了。
+
+```java
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+
+    int[] datas = {0,1,2,3,4,5,6};
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.recycler_item, parent, false);
+        return new ViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.bind(datas[position]);
+    }
+
+    @Override
+    public int getItemCount() {
+        return datas.length;
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private RecyclerItemBinding binding;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            binding = RecyclerItemBinding.bind(itemView);
+        }
+
+        public void bind(int data) {
+            binding.setData(data);
+        }
+    }
+}
+```
+
+> Demo：[RecyclerViewActivity](https://github.com/aem3372/DataBindingDemo/blob/master/app/src/main/java/com/aemiot/demo/databinding/activity/RecyclerViewActivity.java "RecyclerViewActivity")
+
+## 绑定通知
+
+之前的绑定，只是简单的将值绑定到了视图上，当变量值发生变化时，视图并不会更新，除非你将重新绑定新值到视图。如果需要在变量值发生变化时自动通知视图更新，需要实现了`Observable`接口的类型。基本类型都有与其对应实现了`Observable`接口的类型，复杂类型可以使用`ObservableField`的泛化类型，同时还有`ObservableArrayList`、`ObservableArrayMap`来提供集合支持。常见的类型：
+
+| 基本类型     | Observable类型             |
+|:------------ |:-------------------------- |
+| `boolean`    | `ObservableBoolean`        |
+| `int`        | `ObservableInt`            |
+| `String`     | `ObservableField<String>`  |
+| `List<T>`    | `ObservableArrayList<T>`   |
+| `Map<K,V>`   | `ObservableArrayMap<K,V>`  |
+
+对于自定义类型，想要具备这样功能，需要实现`Observable`接口。不过为了简化实现，Library同时提供了一个`BaseObservable`，将其作为基类，这样你只需要为希望被通知的变量或它的getter方法设置`@Bindable`注解，以及在setter方法中额外调用`notifyChange`方法即可。
+
+```java
+public class CustomObservableType extends BaseObservable {
+
+    @Bindable
+    private String value;
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        if(this.value != value) {
+            this.value = value;
+            notifyChange();
+        }
+    }
+}
+```
+
+> Demo：[ObservableTypeActivity](https://github.com/aem3372/DataBindingDemo/blob/master/app/src/main/java/com/aemiot/demo/databinding/activity/ObservableTypeActivity.java "ObservableTypeActivity")
+
+## 获取控件
+
+如果仍然需要像以前一样操纵控件，那么你仍然可以通过id来直接访问控件（不推荐），但是通过Binding类不再需要编写大量`findViewById`方法了，Layout中所有具有id的控件将会成为Binding类中的public field，你可以直接访问它们。
+
+例如，`binding.tip.setText("Hello! DataBinding Id.");`。
+
+> Demo：[IdsActivity](https://github.com/aem3372/DataBindingDemo/blob/master/app/src/main/java/com/aemiot/demo/databinding/activity/IdsActivity.java "IdsActivity")
 
 ## 参考文章
 
